@@ -1,0 +1,53 @@
+header {
+  background:  linear-gradient( 
+    to right, rgb(14 66 90) 0%,
+    rgb(11 67 93) 22%, 
+    rgb(0 0 0 / 17%) 80% ), 
+    url(/assets/bg-header.png) no-repeat center 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-size: cover;
+  padding: 3rem 3rem;
+  border-bottom: 1px solid var(--white-medium);
+}
+
+header h1 {
+  color: var(--white-medium);
+  font-size: 2.2rem;
+  font-style: italic;
+  font-family: 'Lexend', sans-serif;
+}
+
+header .login-icons {
+  display: flex;
+  color: var(--white-medium);
+  gap: 2rem;
+}
+
+header .login-icons i {
+  font-size: 3.2rem;
+  display: flex;
+}
+
+header .login-icons i + i {
+  border-left: 1px solid var(--white-medium);
+  padding-left: 2rem;
+}
+
+header .login-icons .login-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-style: italic;
+  font-family: 'Lexend', sans-serif;
+}
+
+header .login-icons .login-info h3 {
+  font-size: 1.6rem;
+}
+
+header .login-icons .login-info p {
+  font-size: 1.1rem;
+}
