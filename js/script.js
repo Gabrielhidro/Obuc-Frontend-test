@@ -77,3 +77,27 @@ function addNewItem(e) {
   cleanInput();
 }
 
+// Insert datas that exist in SessionStorage
+
+window.addEventListener("load", loadContent);
+
+function loadContent() {
+  if (sessionStorage.hasOwnProperty("key")) {
+    JSON.parse(sessionStorage.getItem("key")).forEach((item) => {
+      tbody.insertAdjacentHTML(
+        "beforeend",
+        `
+        <tr id="${item.id}">
+        <td>${item.predio}</td>
+        <td>${item.local}</td>
+        <td>
+        <i class='bx bxs-pencil'></i>
+        <i onclick="removeForm(${item.id})" class='bx bx-trash'></i>
+        </td>
+        </tr>
+      `
+      );
+    });
+  }
+}
+
