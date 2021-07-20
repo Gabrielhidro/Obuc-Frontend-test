@@ -101,3 +101,19 @@ function loadContent() {
   }
 }
 
+// Remove table item 
+
+function removeForm(id) {
+  const getTr = document.getElementById(id);
+
+  if (confirm("Esta ação é irreversível, deseja prosseguir?")) {
+    getTr.remove();
+  }
+
+  getData();
+
+  // Remove item in the SessionStorage
+
+  const filteredLocal = arrLocaisTrabalho.filter((local) => local.id !== id);
+  sessionStorage.setItem("key", JSON.stringify(filteredLocal));
+}
