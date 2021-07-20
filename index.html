@@ -56,9 +56,9 @@
     <section class="content">
       <h1>Locais de Trabalho</h1>
       <div class="principal">
-        <form>
-          <label class="" for="">Prédio
-            <select class="form-select" id="inputGroupSelect01">
+        <form id="form">
+          <label for="input-predio">Prédio
+            <select class="form-select" id="input-predio">
               <option selected></option>
               <option>Prédio 1</option>
               <option>Prédio 2</option>
@@ -67,8 +67,8 @@
               <option>Prédio 5</option>
             </select>
           </label>
-          <label for="">Local de Trabalho<input type="text"></label>
-          <button>+</button>
+          <label for="input-local">Local de Trabalho<input id="input-local" type="text"></label>
+          <button type="submit" id="add">+</button>
         </form>
 
         <div>
@@ -81,14 +81,6 @@
               </tr>
             </thead>
             <tbody id="table-body">
-              <tr>
-                <td contenteditable="false">Predio 1</td>
-                <td contenteditable="false">Local 1</td>
-                <td>
-                  <i class='bx bxs-pencil'></i>
-                  <i class='bx bx-trash'></i>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
