@@ -1,8 +1,11 @@
-header {
+/* header.header */
+
+header.header {
   background:  linear-gradient( 
-    to right, rgb(14 66 90) 0%,
-    rgb(11 67 93) 22%, 
-    rgb(0 0 0 / 17%) 80% ), 
+    to right,
+    rgb(11 48 64) 0%,
+    rgb(10 51 70) 22%,
+    rgb(0, 0, 0, 0.2) 80% ), 
     url(/assets/bg-header.png) no-repeat center 100%;
 
   display: flex;
@@ -10,33 +13,32 @@ header {
   justify-content: space-between;
   background-size: cover;
   padding: 3rem 3rem;
-  border-bottom: 1px solid var(--white-medium);
 }
 
-header h1 {
+header.header h1 {
   color: var(--white-medium);
   font-size: 2.2rem;
   font-style: italic;
   font-family: 'Lexend', sans-serif;
 }
 
-header .login-icons {
+header.header .login-icons {
   display: flex;
   color: var(--white-medium);
   gap: 2rem;
 }
 
-header .login-icons i {
+header.header .login-icons i {
   font-size: 3.2rem;
   display: flex;
 }
 
-header .login-icons i + i {
+header.header .login-icons i + i {
   border-left: 1px solid var(--white-medium);
   padding-left: 2rem;
 }
 
-header .login-icons .login-info {
+header.header .login-icons .login-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,10 +46,47 @@ header .login-icons .login-info {
   font-family: 'Lexend', sans-serif;
 }
 
-header .login-icons .login-info h3 {
+header.header .login-icons .login-info h3 {
   font-size: 1.6rem;
 }
 
-header .login-icons .login-info p {
+header.header .login-icons .login-info p {
   font-size: 1.1rem;
 }
+
+/* Sidebar */
+
+aside.sidebar {
+  height: calc(100vh - 92.22px);
+  background: linear-gradient(
+    to bottom,
+    rgb(11 48 64) 0%,
+    rgb(9 67 107 / 80%) 40%,
+    rgb(21 159 255 / 62%) 80% );
+  border-top: 1px solid var(--white-medium);
+
+
+  width: 300px;
+}
+
+aside.sidebar h2 {
+  font-size: 1.8rem;
+  color: var(--white-medium);
+  padding: 2rem;
+}
+
+aside.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+aside.sidebar nav button{
+  width: 100%;
+  border: none;
+  font-size: 1.6rem;
+  text-align: left;
+  padding: 1.6rem 2.2rem;
+  background: rgb(5 47 65 / 78%);
+  color: var(--white-medium);
+} 
