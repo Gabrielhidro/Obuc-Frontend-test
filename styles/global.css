@@ -1,8 +1,16 @@
-html{
+html {
   --white-medium: #e7e7e7;
   --blue: #054579;
-
+  --blue-dark: #023857;
 
   font-size: 62.5%;
   font-family: -webkit-pictograph;
+}
+
+* {
+  transition: all 0.3s;
+}
+
+button {
+  cursor: pointer;
 }

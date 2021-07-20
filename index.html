@@ -59,7 +59,7 @@
         <form>
           <label class="" for="">Prédio
             <select class="form-select" id="inputGroupSelect01">
-              <option selected>Selecione um prédio</option>
+              <option selected></option>
               <option>Prédio 1</option>
               <option>Prédio 2</option>
               <option>Prédio 3</option>
@@ -70,10 +70,33 @@
           <label for="">Local de Trabalho<input type="text"></label>
           <button>+</button>
         </form>
+
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="th" scope="col">Prédios</th>
+                <th class="th" scope="col">Locais de trabalho</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr>
+                <td contenteditable="false">Predio 1</td>
+                <td contenteditable="false">Local 1</td>
+                <td>
+                  <i class='bx bxs-pencil'></i>
+                  <i class='bx bx-trash'></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   </main>
 
+  <script src="/js/script.js"></script>
 </body>
 
 </html>
