@@ -5,21 +5,22 @@ const inputPredios = document.getElementById("input-predio");
 const inputLocais = document.getElementById("input-local");
 const tbody = document.getElementById("table-body");
 
-let arrLocaisTrabalho = new Array();
-
 
 // Insert datas in SessionStorage
 
-function setData() {
-  sessionStorage.setItem("key", JSON.stringify(arrLocaisTrabalho));
+function setLocaisTrabalho(data) {
+  sessionStorage.setItem("arrLocaisTrabalho", JSON.stringify(data));
 }
 
 // Get datas in sessionStorage
-
-function getData() {
-  if (sessionStorage.hasOwnProperty("key")) {
-    arrLocaisTrabalho = JSON.parse(sessionStorage.getItem("key"));
+/** Descrição
+ * @returns {Array}
+ */
+function getLocaisTrabalho() {
+  if (sessionStorage.hasOwnProperty("arrLocaisTrabalho")) {
+     return JSON.parse(sessionStorage.getItem("arrLocaisTrabalho"));
   }
+  return new Array()
 }
 
 // Reset inputs when insert datas
@@ -29,12 +30,35 @@ function cleanInput() {
   inputLocais.value = "";
 }
 
+// Render HTML Functions
+function buildLocalTableLine(item){
+  return  `
+  <tr id="${item.id}">
+  <td>${item.predio}</td>
+  <td>${item.local}</td>
+  <td>
+  <i onclick="editForm(${item.id})"class='bx bxs-pencil'></i>
+  <i onclick="removeForm(${item.id})" class='bx bx-trash'></i>
+  </td>
+  </tr>
+`
+}
+
+
+function insertLocalTableLine(item){
+  tbody.insertAdjacentHTML(
+    "beforeend",
+    buildLocalTableLine(item)
+  );
+}
+
 // Insert new datas
 
 buttonAdd.addEventListener("click", addNewItem);
 
 function addNewItem(e) {
   e.preventDefault();
+  const id = Math.random()
 
   // Confirm if inputs has a value
 
@@ -50,30 +74,20 @@ function addNewItem(e) {
     return;
   }
 
-  getData();
+  let arrLocaisTrabalho = getLocaisTrabalho();
+  const item = {
+      id: id,
+      predio: inputPredios.value,
+      local: inputLocais.value,
+  }
 
-  arrLocaisTrabalho.push({
-    id: Math.random(),
-    predio: inputPredios.value,
-    local: inputLocais.value,
-  });
+  arrLocaisTrabalho.push(item);
 
 
   // Insert HTML
 
-  setData();
-  
-  tbody.insertAdjacentHTML('beforeend', `
-  <tr id="${arrLocaisTrabalho.id}">
-  <td>${inputPredios.value}</td>
-  <td>${inputLocais.value}</td>
-  <td>
-  <i class='bx bxs-pencil'></i>
-  <i onclick="removeForm(${arrLocaisTrabalho.id})" class='bx bx-trash'></i>
-  </td>
-  </tr>
-  `)
-
+  setLocaisTrabalho(arrLocaisTrabalho);
+  insertLocalTableLine(item)
   cleanInput();
 }
 
@@ -82,24 +96,9 @@ function addNewItem(e) {
 window.addEventListener("load", loadContent);
 
 function loadContent() {
-  if (sessionStorage.hasOwnProperty("key")) {
-    JSON.parse(sessionStorage.getItem("key")).forEach((item) => {
-      tbody.insertAdjacentHTML(
-        "beforeend",
-        `
-        <tr id="${item.id}">
-        <td>${item.predio}</td>
-        <td>${item.local}</td>
-        <td>
-        <i class='bx bxs-pencil'></i>
-        <i onclick="removeForm(${item.id})" class='bx bx-trash'></i>
-        </td>
-        </tr>
-      `
-      );
-    });
-  }
+  getLocaisTrabalho().forEach(insertLocalTableLine);
 }
+
 
 // Remove table item 
 
@@ -110,10 +109,30 @@ function removeForm(id) {
     getTr.remove();
   }
 
-  getData();
+  let arrLocaisTrabalho = getLocaisTrabalho();
 
   // Remove item in the SessionStorage
 
-  const filteredLocal = arrLocaisTrabalho.filter((local) => local.id !== id);
-  sessionStorage.setItem("key", JSON.stringify(filteredLocal));
+  const filteredItems = arrLocaisTrabalho.filter((item) => item.id !== id);
+  setLocaisTrabalho(filteredItems);
 }
+
+// Edit table item 
+
+function editForm(id) {
+  const selectId = document.getElementById(id)
+
+  selectId.firstElementChild.innerHTML = `
+  <select style="width: 180px;" class="form-select edit-predio">
+    <option selected></option>
+    <option>Prédio 1</option>
+    <option>Prédio 2</option>
+    <option>Prédio 3</option>
+    <option>Prédio 4</option>
+    <option>Prédio 5</option>
+  </select>
+`
+  selectId.children[1].innerHTML = '<input class="edit-local"></input>'
+  selectId.children[2].innerHTML = `<i style="font-size: 2rem; font-weight: bold" onclick="confirmEdit(${id})" class='bx bx-check'></i><i style="font-size: 2rem; font-weight: bold" onclick="cancelEdit(${id})" class='bx bx-x' ></i>`
+}
+
