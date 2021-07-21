@@ -108,7 +108,7 @@ function editForm(id) {
   const selectId = document.getElementById(id)
 
   selectId.firstElementChild.innerHTML = `
-  <select style="width: 180px;" class="form-select edit-predio">
+  <select style="width: 160px; outline: auto;" class="form-select edit-predio">
     <option selected></option>
     <option>Prédio 1</option>
     <option>Prédio 2</option>
@@ -117,7 +117,7 @@ function editForm(id) {
     <option>Prédio 5</option>
   </select>
 `
-  selectId.children[1].innerHTML = '<input class="edit-local"></input>'
+  selectId.children[1].innerHTML = '<input style="outline: auto; padding: 1px 5px;" class="edit-local"></input>'
   selectId.children[2].innerHTML = `<i style="font-size: 2rem; font-weight: bold" onclick="confirmEdit(${id})" class='bx bx-check'></i><i style="font-size: 2rem; font-weight: bold" onclick="cancelEdit(${id})" class='bx bx-x' ></i>`
 }
 
@@ -127,18 +127,23 @@ function confirmEdit(id){
   const selectPredio = selectedId.getElementsByClassName('edit-predio')[0]
   const inputLocal = selectedId.getElementsByClassName('edit-local')[0]
 
-  let arrLocaisTrabalho = getLocaisTrabalho();
-  const editedItem = {
-    id,
-    predio: selectPredio.value,
-    local: inputLocal.value
+  if (selectPredio.value === ''  || inputLocal.value === ''){
+    alert('Preencha os campos de edição!')
   }
-  const index = arrLocaisTrabalho.findIndex(item => item.id == id)
-  arrLocaisTrabalho[index] = editedItem;
+  else {
+    let arrLocaisTrabalho = getLocaisTrabalho();
+    const editedItem = {
+      id,
+      predio: selectPredio.value,
+      local: inputLocal.value
+    }
+    const index = arrLocaisTrabalho.findIndex(item => item.id == id)
+    arrLocaisTrabalho[index] = editedItem;
 
-  setLocaisTrabalho(arrLocaisTrabalho)
+    setLocaisTrabalho(arrLocaisTrabalho)
 
-  selectedId.innerHTML = buildLocalTableLine(editedItem);
+    selectedId.innerHTML = buildLocalTableLine(editedItem);
+  }
 }
 
 /* Cancel Editions */

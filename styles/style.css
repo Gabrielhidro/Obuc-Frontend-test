@@ -90,6 +90,14 @@ main aside.sidebar nav button {
   color: var(--white-medium);
 }
 
+main aside.sidebar nav button:hover {
+  background: var(--blue);
+}
+
+main aside.sidebar nav button.selected-button {
+  border-left: 2px solid rgb(255, 255, 255);
+}
+
 /* Principal */
 
 main section.content {
@@ -142,6 +150,7 @@ main section.content .principal form label select {
   border-radius: 4px;
   box-shadow: 0 0 5px 2px var(--white-medium);
   padding: 5px;
+  outline: none;
 }
 
 main section.content .principal form label select {
@@ -196,4 +205,57 @@ main section.content .principal .table tr > td {
 
 main section.content .principal .table tr td i {
   font-size: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  main {
+    display: block;
+  }
+
+  main aside.sidebar {
+    width: 100%;
+    text-align: center;
+    height: auto;
+  }
+
+  main aside.sidebar nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  main aside.sidebar nav button {
+    text-align: center;
+  }
+
+  main section.content {
+    width: auto;
+    background: #fff;
+    padding: 2rem 0;
+  }
+
+  main section.content h1 {
+    text-align: center;
+  }
+
+  main section.content .principal {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  main section.content .principal .table {
+    margin: 2rem auto;
+    width: 100%;
+  }
+
+  main section.content .principal form {
+    justify-content: center;
+  }
+
+  main section.content .principal div {
+    justify-content: center;
+  }
+
+  main section.content .principal form label select {
+    width: 150px;
+  }
 }
