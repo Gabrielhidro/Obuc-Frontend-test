@@ -136,3 +136,25 @@ function editForm(id) {
   selectId.children[2].innerHTML = `<i style="font-size: 2rem; font-weight: bold" onclick="confirmEdit(${id})" class='bx bx-check'></i><i style="font-size: 2rem; font-weight: bold" onclick="cancelEdit(${id})" class='bx bx-x' ></i>`
 }
 
+/* Confirm Editions */
+
+function confirmEdit(id){
+  const selectedId =  document.getElementById(id)
+
+  const selectPredio = selectedId.getElementsByClassName('edit-predio')[0]
+  const inputLocal = selectedId.getElementsByClassName('edit-local')[0]
+
+  let arrLocaisTrabalho = getLocaisTrabalho();
+  const editedItem = {
+    id,
+    predio: selectPredio.value,
+    local: inputLocal.value
+  }
+  const index = arrLocaisTrabalho.findIndex(item => item.id == id)
+  arrLocaisTrabalho[index] = editedItem;
+
+  setLocaisTrabalho(arrLocaisTrabalho)
+
+  selectedId.innerHTML = buildLocalTableLine(editedItem);
+}
+
