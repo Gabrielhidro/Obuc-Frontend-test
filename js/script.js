@@ -158,3 +158,9 @@ function confirmEdit(id){
   selectedId.innerHTML = buildLocalTableLine(editedItem);
 }
 
+/* Cancel Editions */
+
+function cancelEdit(id){
+  const selectedId =  document.getElementById(id)
+  selectedId.innerHTML = buildLocalTableLine(getLocaisTrabalho().find((item) => item.id == id));
+}
