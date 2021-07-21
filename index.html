@@ -23,6 +23,7 @@
 </head>
 
 <body>
+  <!-- Header -->
   <header class="header">
     <h1>
       Controle de Locais de Trabalho
@@ -36,7 +37,7 @@
       </div>
     </div>
   </header>
-
+  <!-- Sidebar -->
   <main>
     <aside class="sidebar">
       <h2>
@@ -52,13 +53,13 @@
         <button>Responsáveis</button>
       </nav>
     </aside>
-
+    <!-- Principal -->
     <section class="content">
       <h1>Locais de Trabalho</h1>
       <div class="principal">
         <form id="form">
           <label for="input-predio">Prédio
-            <select class="form-select" id="input-predio">
+            <select id="input-predio">
               <option selected></option>
               <option>Prédio 1</option>
               <option>Prédio 2</option>
@@ -70,13 +71,13 @@
           <label for="input-local">Local de Trabalho<input id="input-local" type="text"></label>
           <button type="submit" id="add">+</button>
         </form>
-
+        <!-- Table -->
         <div>
           <table class="table">
             <thead>
               <tr>
-                <th class="th" scope="col">Prédios</th>
-                <th class="th" scope="col">Locais de trabalho</th>
+                <th class="th">Prédios</th>
+                <th class="th">Locais de trabalho</th>
                 <th></th>
               </tr>
             </thead>
@@ -87,7 +88,6 @@
       </div>
     </section>
   </main>
-
   <script src="/js/script.js"></script>
 </body>
 
